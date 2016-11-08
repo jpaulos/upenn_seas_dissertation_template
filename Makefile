@@ -1,37 +1,46 @@
-RUBBER=rubber -d
+# rubber command and options
+RUBBER=rubber
+OPTS=--pdf
+
+# choose heading or heading_proposal
+HEADING=heading_proposal
 
 main:
-	$(RUBBER) dissertation.tex
+	$(RUBBER) $(OPTS) dissertation.tex
 
 heading:
-	$(RUBBER) --jobname tmp_heading --only heading dissertation.tex
-	mv tmp_heading.pdf heading.pdf
+	$(RUBBER) $(OPTS) --jobname tmp_$(HEADING) --only $(HEADING) dissertation.tex
+	mv tmp_$(HEADING).pdf $(HEADING).pdf
 
 introduction:
-	$(RUBBER) --jobname tmp_introduction --only introduction dissertation.tex
+	$(RUBBER) $(OPTS) --jobname tmp_introduction --only introduction dissertation.tex
 	mv tmp_introduction.pdf introduction.pdf
 
 one:
-	$(RUBBER) --jobname tmp_one --only one dissertation.tex
+	$(RUBBER) $(OPTS) --jobname tmp_one --only one dissertation.tex
 	mv tmp_one.pdf one.pdf
 
 two:
-	$(RUBBER) --jobname tmp_two --only two dissertation.tex
+	$(RUBBER) $(OPTS) --jobname tmp_two --only two dissertation.tex
 	mv tmp_two.pdf two.pdf
 
 conclusion:
-	$(RUBBER) --jobname tmp_conclusion --only conclusion dissertation.tex
+	$(RUBBER) $(OPTS) --jobname tmp_conclusion --only conclusion dissertation.tex
 	mv tmp_conclusion.pdf conclusion.pdf
 
 appendix:
-	$(RUBBER) --jobname tmp_appendix --only alpha,beta dissertation.tex
+	$(RUBBER) $(OPTS) --jobname tmp_appendix --only alpha,beta dissertation.tex
 	mv tmp_appendix.pdf appendix.pdf
 
-all: main introduction one two conclusion appendix
+# make all targets into separate pdfs
+all: main heading introduction one two conclusion appendix
 
+# remove temporary files, keeping final output pdf
 tidy:
 	$(RUBBER) --clean dissertation.tex
 	rm -f *.aux *.log *.blg *.lot *.lof *.bbl *.toc *.out *~
 
-clean: tidy
+# removal all generated files, including the final output pdf
+clean:
+	$(RUBBER) $(OPTS) --clean dissertation.tex
 	rm -f *.pdf *.dvi
