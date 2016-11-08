@@ -1,0 +1,312 @@
+%%% PREAMBLE
+
+\documentclass[11pt]{report} % This is in order to have the chapter feature and page numbers in the same location on even and odd pages. 
+% Acceptable font sizes are 10 to 12 pts
+
+\usepackage[papersize={8.5 in, 11 in}, nohead, includeheadfoot, left=1.5 in, right = 1 in, vmargin= 1 in]{geometry}
+% The options above are to set the paper size (as per page 11 of the guidelines and the margins. Includefoot is to make sure that nothing
+% gets printed on the margins. The statutory margins are set on page 5. 
+
+\usepackage[doublespacing]{setspace} % Needed to set double-spacing for the main document, but needs more adhoc commands to
+								% use single spacing for tables, etc.
+% This is a helpful package that puts math inside length specifications
+\usepackage{calc}
+
+% For the signature boxes and much better looking tables
+\usepackage{array} % Also for better arrays (eg matrices) in maths
+\usepackage{tabularx}
+\usepackage{booktabs}
+
+% Commands to format the Table of Contents, List of Tables and List of Illustrations, as per the Wharton Template
+\setcounter{tocdepth}{2}
+
+\usepackage[toctextentriesindented]{tocstyle}
+\usetocstyle{standard}
+
+\usepackage[toc,page]{appendix}
+
+%\usepackage{tocloft}
+%\cftsetindents{chapter}{0em}{1.5em}
+
+\usepackage{remreset} % Remove counters from reset list
+
+
+% Commands (more further down, at preliminary, main and appendix) to change the formatting of chapter headings
+\usepackage[compact]{titlesec}
+%\renewcommand{\beforetitleunit}{0 pt}
+%\titleformat{\section}[hang]{\large}{\thesection.}{6 pt}{}
+%\titleformat{\subsection}[hang]{\normalsize\itshape}{\thesubsection.}{6 pt}{}
+%\titlespacing*{\section}{0pt}{0pt}{0pt}
+%\titlespacing*{\subsection}{0pt}{0pt}{0pt}
+
+%\usepackage{parskip} % To allow for better management of the Dutch paragraph style
+\usepackage{url} % To allow for better typing of the url in the Creative Commons part of the copyright
+\usepackage[numbers,sort&compress]{natbib} % allows the author-date citation system
+%\bibpunct{(}{)}{;}{a}{,}{,} % options for natbib to yield the citation style I like
+
+% Other packages that are not needed for the template, but I highly recommend (and all of your own packages go here to)
+% Add them one by one to make sure they do not interfere, for instance the package subfigure clashes with this template
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage[cmex10]{amsmath}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{remark}{Remark}
+
+\usepackage{graphicx}
+\graphicspath{{./figures/tase/}{./figures/icra2013/}{./figures/cdc2012/}{./figures/ram2013/}{./figures/rss2014/}{./figures/magnetometer/}{./figures/isrr2015/}{./figures/background/}}
+\DeclareGraphicsExtensions{.pdf,.jpeg,.png,.PNG,.JPG}
+
+%\usepackage[section]{placeins} % defines a \FloatBarrier command beyond which floats may not pass. A package option allows you to declare that floats may not pass a \section command, but you can place \FloatBarriers wherever you choose. 
+%\usepackage{morefloats}
+  
+\usepackage{longtable}
+\usepackage{dcolumn}
+\usepackage{tabularx}
+
+\usepackage{rotating}
+\usepackage{pdflscape}
+
+\usepackage{xtab}
+\usepackage{paralist} % very flexible & customizable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim}
+%\usepackage{subfiles} % To be better able to manage large projects by compiling the separate files included in the final document
+
+%\usepackage[english]{babel} % resets \contentsname, etc.
+\usepackage[T1]{fontenc}
+\usepackage{units}
+%\usepackage[amssymb]{SIunits}
+%\usepackage{siunitx}
+
+\usepackage[font=small]{caption}
+\usepackage[font=small]{subfig}
+
+%\usepackage{cite}
+
+%\usepackage[pagebackref=true]{hyperref}
+\usepackage{hyperref}
+\hypersetup{
+  bookmarks=true,
+  pdfborder={0 0 0},
+  colorlinks=true,
+  linkcolor=black,    % color of internal links
+  citecolor=black,    % color of links to bibliography
+  filecolor=black,    % color of links to files
+  urlcolor=black      % color of urls
+}
+\usepackage[figure,table]{hypcap} % so that hyperref links jump to top of figures
+
+\usepackage{breakurl}
+
+\usepackage{amssymb}
+\usepackage[mathscr]{eucal} % adds \mathscr command for Euler script, else overwrites mathcal
+\usepackage{nicefrac}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{array}
+
+
+% *** FLOAT PACKAGES ***
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier\end{landscape} fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure. The latest version and documentation can be found at:
+% http://www.ctan.org/tex-archive/macros/latex/base/
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/sttools/
+% Do not use the stfloats baselinefloat ability as IEEE does not allow
+% \baselineskip to stretch. Authors submitting work to the IEEE should note
+% that IEEE rarely uses double column equations and that authors should try
+% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
+% packages (also by Sigitas Tolusis) as IEEE does not format its papers in
+% such ways.
+% Do not attempt to use stfloats with fixltx2e as they are incompatible.
+% Instead, use Morten Hogholm'a dblfloatfix which combines the features
+% of both fixltx2e and stfloats:
+%
+% \usepackage{dblfloatfix}
+% The latest version can be found at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/dblfloatfix/
+
+
+
+
+%\ifCLASSOPTIONcaptionsoff
+%  \usepackage[nomarkers]{endfloat}
+% \let\MYoriglatexcaption\caption
+% \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
+%\fi
+% endfloat.sty was written by James Darrell McCauley, Jeff Goldberg and
+% Axel Sommerfeldt. This package may be useful when used in conjunction with
+% IEEEtran.cls'  captionsoff option. Some IEEE journals/societies require that
+% submissions have lists of figures/tables at the end of the paper and that
+% figures/tables without any captions are placed on a page by themselves at
+% the end of the document. If needed, the draftcls IEEEtran class option or
+% \CLASSINPUTbaselinestretch interface can be used to increase the line
+% spacing as well. Be sure and use the nomarkers option of endfloat to
+% prevent endfloat from "marking" where the figures would have been placed
+% in the text. The two hack lines of code above are a slight modification of
+% that suggested by in the endfloat docs (section 8.4.1) to ensure that
+% the full captions always appear in the list of figures/tables - even if
+% the user used the short optional argument of \caption[]{}.
+% IEEE papers do not typically make use of \caption[]'s optional argument,
+% so this should not be an issue. A similar trick can be used to disable
+% captions of packages such as subfig.sty that lack options to turn off
+% the subcaptions:
+% For subfig.sty:
+% \let\MYorigsubfloat\subfloat
+% \renewcommand{\subfloat}[2][\relax]{\MYorigsubfloat[]{#2}}
+% However, the above trick will not work if both optional arguments of
+% the \subfloat command are used. Furthermore, there needs to be a
+% description of each subfigure *somewhere* and endfloat does not add
+% subfigure captions to its list of figures. Thus, the best approach is to
+% avoid the use of subfigure captions (many IEEE journals avoid them anyway)
+% and instead reference/explain all the subfigures within the main caption.
+% The latest version of endfloat.sty and its documentation can obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/endfloat/
+%
+% The IEEEtran \ifCLASSOPTIONcaptionsoff conditional can also be used
+% later in the document, say, to conditionally put the References on a
+% page by themselves.
+
+
+
+
+
+% *** CUSTOM MACROS ***
+\newcommand{\ie}{\emph{i.e.},\ }
+\newcommand{\eg}{\emph{e.g.},\ } % the \ ensures latex does not treat command as end of sentence
+
+\newcommand{\innerprod}[2]{\ensuremath{\left\langle #1, \, #2 \right\rangle}}
+\newcommand{\E}[1]{\mathbf{E}\left[#1\right]} % expectation
+\newcommand{\1}[2]{\mathbf{1}_{#2}\left( #1 \right)}
+
+\renewcommand{\P}{\mathbb{P}}
+
+\newcommand{\bb}{\mathbf{b}}
+\newcommand{\be}{\mathbf{e}}
+\newcommand{\bbf}{\mathbf{f}}
+\newcommand{\bq}{\mathbf{q}}
+\newcommand{\br}{\mathbf{r}}
+\newcommand{\bs}{\mathbf{s}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\by}{\mathbf{y}}
+\newcommand{\bz}{\mathbf{z}}
+\newcommand{\Q}{\mathcal{Q}}
+\newcommand{\bigO}{\mathcal{O}}
+\newcommand{\G}{\mathcal{G}}
+
+\renewcommand{\H}{\mathscr{H}}
+\newcommand{\V}{\mathscr{V}}
+\newcommand{\W}{\mathscr{W}}
+\newcommand{\X}{\mathscr{X}}
+\newcommand{\Y}{\mathscr{Y}}
+\newcommand{\Z}{\mathscr{Z}}
+
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\I}{ \{ 0,1 \} }
+
+\newcommand{\pf}{p_{\rm f}}
+\newcommand{\ps}{p_{\rm s}}
+\newcommand{\pfp}{p_{\rm fp}}
+\newcommand{\pfn}{p_{\rm fn}}
+
+\newcommand{\qf}{\overline{p}_{\rm f}}
+\newcommand{\qs}{\overline{p}_{\rm s}}
+\newcommand{\qfp}{\overline{p}_{\rm fp}}
+\newcommand{\qfn}{\overline{p}_{\rm fn}}
+
+\newcommand{\Matern}{Mat\'ern\ }
+
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+
+\newcommand{\chapref}[1]{\hyperref[#1]{Chapter~\ref*{#1}}}
+\newcommand{\appendixref}[1]{\hyperref[#1]{Appendix~\ref*{#1}}}
+\newcommand{\secref}[1]{\hyperref[#1]{Section~\ref*{#1}}}
+\newcommand{\figref}[1]{\hyperref[#1]{Figure~\ref*{#1}}}
+\newcommand{\tabref}[1]{\hyperref[#1]{Table~\ref*{#1}}}
+\newcommand{\algoref}[1]{\hyperref[#1]{Algorithm~\ref*{#1}}}
+
+%\newcommand{\blankline}[1][1]{\quad\vspace{(1 + (\real{#1} - 1))*\baselineskip}\pagebreak[3]}
+\newcommand{\blankline}{\quad\pagebreak[3]}
+\newcommand{\halfblankline}{\quad\vspace{-0.5\baselineskip}\pagebreak[3]}
+
+\newcommand*{\CDot}{\scalebox{0.6}{\textbullet}}%\raisebox{-0.25ex}{\scalebox{1.2}{$\cdot$}}}
+
+\newtheorem{lemma}{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{issue}{Issue}
+\newtheorem{rmrk}{Remark}
+
+%%% BEGIN DOCUMENT
+
+\begin{document}
+%\SIunits[amssymb]
+
+% Making tables and figures numbered continuously
+\makeatletter
+\@removefromreset{table}{chapter}
+\makeatother
+\renewcommand{\thetable}{\arabic{table}}
+\makeatletter
+\@removefromreset{figure}{chapter}
+\makeatother
+\renewcommand{\thefigure}{\arabic{figure}}
+
+\include{heading}
+
+%% MAIN TEXT
+\newpage
+\pagenumbering{arabic}
+\pagestyle{plain} % This has to be repeated here because the lists change the style
+
+% Dutch style of paragraph formatting, i.e. no indents. 
+%\setlength{\parskip}{10 pt} % Same as Word file
+%\setlength{\parindent}{0pt}
+
+\include{introduction}
+\include{one}
+\include{two}
+\include{conclusion}
+
+\include{alpha}
+\include{beta}
+
+
+%\include{bibliography}
+
+%% BIBLIOGRAPHY
+\clearpage
+\singlespacing
+\phantomsection % To make hyperref jump to the correct location
+\addcontentsline{toc}{chapter}{Bibliography}
+\renewcommand\bibname{Bibliography}
+\bibliographystyle{plainnat}
+%\bibliographystyle{plain}
+\bibliography{IEEEfull,references} % This is the filename of the bibtex bibliography file (it has to be in the same directory as the main LaTeX file)
+
+
+%% INDEX (OPTIONAL) - I do not really know how to code this, sorry
+
+\end{document}

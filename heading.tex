@@ -1,0 +1,223 @@
+%\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi} % Defining stars for significance tables
+
+% Defining variables to be used throughout the document for personalization
+\def\mytitle{Title of the Thesis} % Make sure this is in all caps
+\def\myauthor{Author Name}
+\def\myauthorfull{Author Long Name}
+\def\mysupervisorname{Advisor Name}
+\def\mysupervisortitle{Advisor Title}
+\newlength{\superlen}   % a "scratch" length
+\settowidth{\superlen}{\mysupervisorname, \mysupervisortitle} % Width of signature line for supervisor
+\def\gradchairname{Grad Chair Name}
+\def\gradchairtitle{Grad Chair Title}
+\newlength{\chairlen}   % a "scratch" length
+\settowidth{\chairlen}{\gradchairname, \gradchairtitle} % Width of signature line for supervisor
+\newlength{\maxlen}
+\setlength{\maxlen}{\maxof{\superlen}{\chairlen}}
+\def\mydepartment{Mechanical Engineering and Applied Mechanics}
+\def\myyear{20XX}
+\def\signatures{36 pt} % Space to accommodate the signatures, you can fiddle with this as you like
+
+%% PRELIMINARY PAGES
+
+\pagenumbering{roman}
+\pagestyle{plain}
+
+% TITLE PAGE
+
+\begin{titlepage}
+\thispagestyle{empty} % No page numbers on title page, as per Manual page 8
+\begin{center}
+
+%\onehalfspacing
+
+\mytitle
+
+\myauthor
+
+A DISSERTATION
+
+in 
+
+\mydepartment 
+
+Presented to the Faculties of the University of Pennsylvania
+
+in 
+
+Partial Fulfillment of the Requirements for the
+
+Degree of Doctor of Philosophy
+
+\myyear
+
+\vfill
+% end proposal
+\end{center}
+
+\vfill % Here to make sure the page is filled
+
+
+\begin{flushleft}
+
+\blankline
+
+\blankline
+
+\singlespacing
+
+\rule{\linewidth}{0.3mm}
+\mysupervisorname, Supervisor of Dissertation \\
+\mysupervisortitle
+
+\doublespacing
+
+\blankline
+
+\blankline
+
+\singlespacing
+
+\rule{\linewidth}{0.3mm}
+\gradchairname, Graduate Group Chairperson \\
+\gradchairtitle
+
+\doublespacing
+
+\halfblankline
+
+\singlespacing
+
+Dissertation Committee % No signature necessary
+
+\blankline
+
+Member One, Title of Member One
+
+Member Two, Title of Member Two
+
+Member Three, Title of Member Three
+
+\end{flushleft}
+
+\end{titlepage}
+
+% COPYRIGHT NOTICE (optional)
+
+\doublespacing
+
+\thispagestyle{empty} % No page number as per Manual, p. 11
+
+\vspace*{\fill}
+
+\begin{flushleft}
+\mytitle
+
+ \copyright \space COPYRIGHT
+ 
+\myyear
+
+\myauthorfull\\[24 pt] % If traditional copyright then delete everything below here, but keep \end{flushleft}
+
+%This work is licensed under the \\
+%Creative Commons Attribution \\
+%NonCommercial-ShareAlike 3.0 \\
+%License
+%
+%To view a copy of this license, visit
+%
+%\url{http://creativecommons.org/licenses/by-nc-sa/3.0/}
+
+\end{flushleft}
+\pagebreak 
+
+% Changing formatting for preliminary pages (NOT OPTIONAL)
+
+% DEDICATION (OPTIONAL)
+
+\setcounter{page}{3}
+\begin{center}
+\textit{Dedication goes here.}
+\end{center}
+
+% ACKNOWLEDGEMENT (OPTIONAL)
+
+%\clearpage
+\chapter*{Acknowledgments}
+\addcontentsline{toc}{chapter}{Acknowledgments} % This is to include this section in the Table of Contents
+
+Text of acknowledgments goes here.
+Text of acknowledgments goes here.
+Text of acknowledgments goes here.
+Text of acknowledgments goes here.
+Text of acknowledgments goes here.
+Text of acknowledgments goes here.
+Text of acknowledgments goes here.
+Text of acknowledgments goes here.
+Text of acknowledgments goes here.
+Text of acknowledgments goes here.
+
+
+
+% ABSTRACT
+\begingroup
+\titleformat{\chapter}[hang]{\large\center}{\thechapter}{0 pt}{}
+\titlespacing*{\chapter}{0pt}{-33 pt}{6 pt} % The key value here is the -33 pts, I got to it by old fashioned measuring with a ruler....
+
+\clearpage
+%\onehalfspacing
+\chapter*{ABSTRACT}
+\addcontentsline{toc}{chapter}{Abstract} % This is to include this section in the Table of Contents
+\begin{center}
+\mytitle
+
+\myauthor
+
+\mysupervisorname
+
+\end{center}
+
+Text of abstract goes here.
+Text of abstract goes here.
+Text of abstract goes here.
+Text of abstract goes here.
+Text of abstract goes here.
+Text of abstract goes here.
+Text of abstract goes here.
+Text of abstract goes here.
+Text of abstract goes here.
+Text of abstract goes here.
+
+\endgroup
+
+% TABLE OF CONTENTS
+
+\clearpage
+\singlespacing
+
+\phantomsection % To make hyperref jump to the correct location
+\addcontentsline{toc}{chapter}{Contents}
+\tableofcontents
+
+% LIST OF TABLES
+
+\clearpage
+\phantomsection % To make hyperref jump to the correct location
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+
+% LIST OF ILLUSTRATIONS
+
+\clearpage
+\phantomsection % To make hyperref jump to the correct location
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+
+% PREFACE (OPTIONAL)
+
+%\clearpage
+\doublespacing
+%\chapter*{Preface}
+%\addcontentsline{toc}{chapter}{Preface} % This is to include this section in the Table of Contents
+
+%\endgroup
