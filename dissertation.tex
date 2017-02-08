@@ -54,8 +54,7 @@
 \newtheorem{remark}{Remark}
 
 \usepackage{graphicx}
-\graphicspath{{./figures/tase/}{./figures/icra2013/}{./figures/cdc2012/}{./figures/ram2013/}{./figures/rss2014/}{./figures/magnetometer/}{./figures/isrr2015/}{./figures/background/}}
-\DeclareGraphicsExtensions{.pdf,.jpeg,.png,.PNG,.JPG}
+\DeclareGraphicsExtensions{.pdf,.jpeg,.jpg,.png,.PNG,.JPG}
 
 %\usepackage[section]{placeins} % defines a \FloatBarrier command beyond which floats may not pass. A package option allows you to declare that floats may not pass a \section command, but you can place \FloatBarriers wherever you choose. 
 %\usepackage{morefloats}
@@ -72,11 +71,8 @@
 \usepackage{verbatim}
 %\usepackage{subfiles} % To be better able to manage large projects by compiling the separate files included in the final document
 
-%\usepackage[english]{babel} % resets \contentsname, etc.
 \usepackage[T1]{fontenc}
-\usepackage{units}
-%\usepackage[amssymb]{SIunits}
-%\usepackage{siunitx}
+\usepackage{siunitx}
 
 \usepackage[font=small]{caption}
 \usepackage[font=small]{subfig}
@@ -84,9 +80,8 @@
 %\usepackage{cite}
 
 %\usepackage[pagebackref=true]{hyperref}
-\usepackage{hyperref}
+\usepackage[bookmarks=true]{hyperref}
 \hypersetup{
-  bookmarks=true,
   pdfborder={0 0 0},
   colorlinks=true,
   linkcolor=black,    % color of internal links
@@ -95,8 +90,6 @@
   urlcolor=black      % color of urls
 }
 \usepackage[figure,table]{hypcap} % so that hyperref links jump to top of figures
-
-\usepackage{breakurl}
 
 \usepackage{amssymb}
 \usepackage[mathscr]{eucal} % adds \mathscr command for Euler script, else overwrites mathcal
@@ -207,9 +200,14 @@
 \newcommand{\bq}{\mathbf{q}}
 \newcommand{\br}{\mathbf{r}}
 \newcommand{\bs}{\mathbf{s}}
+\newcommand{\bu}{\mathbf{u}}
+\newcommand{\bv}{\mathbf{v}}
 \newcommand{\bx}{\mathbf{x}}
 \newcommand{\by}{\mathbf{y}}
 \newcommand{\bz}{\mathbf{z}}
+
+\newcommand{\bomega}{\boldsymbol{\omega}}
+
 \newcommand{\Q}{\mathcal{Q}}
 \newcommand{\bigO}{\mathcal{O}}
 \newcommand{\G}{\mathcal{G}}
@@ -233,8 +231,6 @@
 \newcommand{\qs}{\overline{p}_{\rm s}}
 \newcommand{\qfp}{\overline{p}_{\rm fp}}
 \newcommand{\qfn}{\overline{p}_{\rm fn}}
-
-\newcommand{\Matern}{Mat\'ern\ }
 
 \DeclareMathOperator*{\argmax}{argmax}
 \DeclareMathOperator*{\argmin}{argmin}

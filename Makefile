@@ -38,9 +38,9 @@ all: main heading introduction one two conclusion appendix
 # remove temporary files, keeping final output pdf
 tidy:
 	$(RUBBER) --clean dissertation.tex
-	rm -f *.aux *.log *.blg *.lot *.lof *.bbl *.toc *.out *~
+	rm -f *.dvi *.aux *.log *.blg *.lot *.lof *.bbl *.toc *.out *~
 
 # removal all generated files, including the final output pdf
 clean:
 	$(RUBBER) $(OPTS) --clean dissertation.tex
-	rm -f *.pdf *.dvi
+	rm -f *.dvi *.aux *.log *.blg *.lot *.lof *.bbl *.toc *.out *~ *.pdf
