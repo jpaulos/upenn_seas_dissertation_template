@@ -1,7 +1,7 @@
 # upenn_seas_dissertation_template
-Template and example for UPenn SEAS PhD Proposal or Dissertation, based on work by Ben and Phil.
+Unofficial template and example for UPenn SEAS PhD Proposal or Dissertation, based on work by Ben and Phil.
 
-To build, run 'pdflatex dissertation.tex' or run 'make.' The makefile adds some workflow convenience, but depends on the 'rubber' tool available through your distribution.
+To build, run 'pdflatex dissertation.tex' or just run 'make.' The makefile adds some workflow convenience, but depends on the 'rubber' tool available through your distribution.
 
 There are two separate heading files to handle thesis or proposal formatting named heading.tex and heading_proposal.tex.  Include the needed filename in dissertation.tex (and also, optionally, in the makefile).
 
